@@ -1,0 +1,17 @@
+Options -Includes +FollowSymLinks -Indexes
+AddDefaultCharset utf-8
+
+RewriteEngine on
+RewriteBase /
+
+# Редирект с www.[[DOMAIN]] на [[DOMAIN]]
+RewriteCond %{HTTP_HOST} ^www\.[[DOMAIN]]
+RewriteRule ^(.*)$ https://[[DOMAIN]]/$1 [R=permanent,L]
+
+# Если файл есть на диске, с ним ничего не происходит
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^(.*)$ - [NC,L]
+
+# Если файла на диске нет, вызывается скрипт
+RewriteRule ^.*$ /_.php [NC,L]
