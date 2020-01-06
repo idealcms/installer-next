@@ -4,7 +4,7 @@ return [
     // Начальная папка CMS
     'startUrl' => '',
     // Папка админки
-    'cmsFolder' => '/admin',
+    'adminFolder' => '/admin',
     // Параметры подключения к БД
     'db' => [
         'host' => getenv('DB_HOST') ?: 'localhost',
@@ -18,5 +18,20 @@ return [
     'middleware' => [
         \Ideal\Core\Admin\Router::class,
         \Ideal\Core\Site\Router::class,
+    ],
+    'definitions' => [
+        //\Ideal\Core\Config::class => create(\Ideal\Core\Config3::class),
+    ],
+    'structures' => [
+        // Подключаем структуру для страниц на сайте
+        [
+            'id' => 1,
+            'model' => \Ideal\Structure\Part\Site\Model::class,
+            'name' => 'Страницы',
+            'isShow' => 1,
+            'hasTable' => true,
+            'startName' => 'Главная',
+            'url' => ''
+        ],
     ],
 ];
