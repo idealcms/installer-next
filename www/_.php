@@ -5,7 +5,7 @@ ini_set('display_errors', 'On');
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Инициализируем фронт контроллер
-$page = new \Ideal\Core\FrontController();
+$page = new \Ideal\Core\FrontController(__DIR__);
 
 // Запуск приложения
-$page->run(__DIR__);
+$page->run();

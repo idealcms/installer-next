@@ -26,7 +26,7 @@ return [
         // Подключаем структуру для страниц на сайте
         [
             'id' => 1,
-            'model' => \Ideal\Structure\Part\Site\Model::class,
+            'structure' => 'Ideal_Part',
             'name' => 'Страницы',
             'isShow' => 1,
             'hasTable' => true,
