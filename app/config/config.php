@@ -12,12 +12,12 @@ return [
         'password' => getenv('DB_PASSWORD') ?: '',
         'name' => getenv('DB_NAME') ?: '',
         'charset' => 'UTF-8',
-        'prefix' => 'i_'
+        'prefix' => 'i_',
     ],
     // Очередь middleware для обработки http-запроса (вызывается __invoke у соответствующего класса)
     'middleware' => [
-        \Ideal\Core\Admin\Router::class,
-        \Ideal\Core\Site\Router::class,
+        \Ideal\Core\Admin\Middleware::class,
+        \Ideal\Core\Site\Middleware::class,
     ],
     'definitions' => [
         //\Ideal\Core\Config::class => create(\Ideal\Core\Config3::class),
@@ -31,7 +31,8 @@ return [
             'isShow' => 1,
             'hasTable' => true,
             'startName' => 'Главная',
-            'url' => ''
+            'structures' => [], // Ideal_Part, Ideal_News // виды структур, которые можно создавать в этой структуре
+            'url' => '',
         ],
     ],
 ];
